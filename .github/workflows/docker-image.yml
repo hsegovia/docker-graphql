@@ -28,10 +28,13 @@ jobs:
     - name: Build Docker Image
       run: |
         docker build -t segoviahector/docker-graphql:0.0.2 .
+        docker build -t segoviahector/docker-graphql:latest .
 
     - name: Push Docker Image
       run: |
         docker push segoviahector/docker-graphql:0.0.2
+        docker push segoviahector/docker-graphql:latest
+        
       
     
  
