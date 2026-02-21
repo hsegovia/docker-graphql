@@ -35,15 +35,19 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "New Version: $NEW_VERSION!!!!!"
         
-#     - name: Build Docker Image
-#      run: |
-#        docker build -t segoviahector/docker-graphql:0.0.2 .
-#        docker build -t segoviahector/docker-graphql:latest .
-
- #   - name: Push Docker Image
-  #    run: |
-   #     docker push segoviahector/docker-graphql:0.0.2
-    #    docker push segoviahector/docker-graphql:latest
+    - name: Build Docker Image
+      env:     
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      run: |
+        docker build -t segoviahector/docker-graphql:$NEW_VERSION .
+        docker build -t segoviahector/docker-graphql:latest .
+        
+    - name: Push Docker Image
+      env:     
+        NEW_VERSION: ${{ steps.version.outputs.version }}    
+      run: |
+         docker push segoviahector/docker-graphql:$NEW_VERSION
+         docker push segoviahector/docker-graphql:latest
         
       
     
