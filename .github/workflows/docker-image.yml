@@ -35,7 +35,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "New Version: $NEW_VERSION!!!!!"
         
-#    - name: Build Docker Image
+#     - name: Build Docker Image
 #      run: |
 #        docker build -t segoviahector/docker-graphql:0.0.2 .
 #        docker build -t segoviahector/docker-graphql:latest .
